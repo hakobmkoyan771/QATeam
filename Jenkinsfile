@@ -8,10 +8,15 @@ pipeline {
         }
       }
     }
+    stage("Build Python Container Image") {
+      steps {
+        sh "docker build -t python_container ." 
+      }
+    }
     stage("Python Container") {
       agent {
-        dockerfile {
-          filename 'Dockerfile'
+        docker {
+          image 'python_container'
           reuseNode true
         }
       }
