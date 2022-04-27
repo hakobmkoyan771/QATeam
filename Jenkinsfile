@@ -1,21 +1,16 @@
 pipeline {
-  agent none
+  agent any
   stages {
     stage("Checkout Tasks Repo")  {
-      agent any
       steps {
         dir('Students') {
           git branch: 'main', url: 'https://github.com/armenmelkonyan90/for-python-tasks'
         }
       }
     }
-    stage("Copy Workspace to Python Container") {
-      agent {
-        dockerfile true 
-      }
+    stage("Build Python Container Image") {
       steps {
-        sh 'node --version'
-        sh 'svn --version'
+        docker.build("python_container")
       }
     }
   }
