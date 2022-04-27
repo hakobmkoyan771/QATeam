@@ -10,8 +10,8 @@ pipeline {
     }
     stage("Python Container") {
       agent { 
-        dockerfile true
         docker {
+          dockerfile true
           reuseNode true 
           }
         }
