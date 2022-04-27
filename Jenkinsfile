@@ -8,10 +8,10 @@ pipeline {
         }
       }
     }
-    stage("") {
+    stage("Python Container") {
       agent { dockerfile true }
       steps {
-        sh "ls"
+       sh "ls"
       }
     }
   }
