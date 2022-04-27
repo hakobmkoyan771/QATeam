@@ -1,3 +1,3 @@
-FROM python
+FROM ubuntu
 
-RUN pip install pytest
+RUN /bin/bash -c 'echo abc'
