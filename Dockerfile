@@ -1,3 +1,3 @@
-FROM python
+FROM node:16.13.1-alpine
 
-RUN pip install pytest
+RUN apk add -U subversion
