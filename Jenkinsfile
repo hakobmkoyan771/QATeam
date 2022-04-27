@@ -11,8 +11,7 @@ pipeline {
     stage("Build & Run Python Container") {
       steps {
         sh "docker build -t python_container ." 
-        sh "docker run -d python_container"
-        sh """docker exec -it python_container bash -c "ls" """
+        sh """docker run -d -it python_container bash -c "ls" """
       }
     }
     /*stage("Copy Workspace to Python Container") {
