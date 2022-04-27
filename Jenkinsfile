@@ -15,5 +15,10 @@ pipeline {
         }
       }
     }
+    stage("Copy Workspace Files on Python Container") {
+      steps {
+        sh "docker cp ./* " 
+      }
+    }
   }
 }
