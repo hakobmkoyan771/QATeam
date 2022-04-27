@@ -9,9 +9,12 @@ pipeline {
       }
     }
     stage("Python Container") {
-      agent { 
-        dockerfile true
+      agent {
+        dockerfile {
+          filename 'Dockerfile'
+          reuseNode true
         }
+      }
       steps {
        sh "ls"
       }
