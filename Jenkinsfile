@@ -8,14 +8,14 @@ pipeline {
         }
       }
     }
-    stage("Build & Run Python Container") {
+    stage("Copy Workspace to Python Container") {
+      agent {
+        dockerfile true 
+      }
       steps {
-        sh "docker build -t python_container ." 
-        sh """docker run -d -it python_container ls """
+        sh 'node --version'
+        sh 'svn --version'
       }
     }
-    /*stage("Copy Workspace to Python Container") {
-        sh "docker cp "
-    }*/
   }
 }
