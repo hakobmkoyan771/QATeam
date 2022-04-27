@@ -9,9 +9,9 @@ pipeline {
       }
     }
     stage("Python Container") {
-      //agent { dockerfile true }
+      agent { dockerfile true }
       steps {
-       sh "sudo docker ps"
+       sh "ls"
       }
     }
   }
