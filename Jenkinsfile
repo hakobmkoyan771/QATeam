@@ -10,7 +10,9 @@ pipeline {
     }
     stage("Build Python Container Image") {
       steps {
-        docker.build("python_container")
+        script {
+          docker.build("python_container")
+        }
       }
     }
   }
