@@ -8,20 +8,14 @@ pipeline {
         }
       }
     }
-    stage("Build Python Container Image") {
+    stage("Build & Run Python Container") {
       steps {
         sh "docker build -t python_container ." 
+        sh "docker run -d python_container"
       }
     }
-    stage("Python Container") {
-      agent {
-        docker {
-          image 'python_container'
-        }
-      }
-      steps {
-       sh "ls"
-      }
-    }
+    /*stage("Copy Workspace to Python Container") {
+        sh "docker cp "
+    }*/
   }
 }
