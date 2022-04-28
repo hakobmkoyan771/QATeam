@@ -1,3 +1,3 @@
-FROM node:16-alpine
+FROM python
 
-RUN apk add -U git curl
+RUN pip install pytest
