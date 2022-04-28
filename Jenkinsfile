@@ -7,7 +7,7 @@ pipeline {
     stage("Checkout Tasks Repo")  {
       steps {
         dir('Students') {
-          git branch: 'main', url: "${params.link}"//'https://github.com/armenmelkonyan90/for-python-tasks'
+          git branch: 'main', url: "${params.link}"
         }
       }
     }
