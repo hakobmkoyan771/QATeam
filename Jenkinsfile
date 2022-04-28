@@ -23,6 +23,6 @@ pipeline {
           docker.build("python_container")
         }
       }
-    }
-  }*/
+    }*/
+  }
 }
