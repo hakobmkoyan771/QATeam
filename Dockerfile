@@ -1,3 +1,3 @@
-FROM ubuntu
+FROM node:16-alpine
 
-RUN /bin/bash -c 'echo abc'
+RUN apk add -U git curl
