@@ -6,10 +6,10 @@ pipeline {
   stages {
     stage("Checkout Tasks Repo")  {
       steps {
-        dir('Students') {
+        dir('GitRepo') {
           git branch: 'main', url: "${params.link}"
         }
-        sh """echo "${params.link}" > ./Students/repo-link"""
+        sh """echo "${params.link}" > ./GitRepo/repo-link"""
       }
     }
 /*    stage("Build & Run Pytest Container") {
