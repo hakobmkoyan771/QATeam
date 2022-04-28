@@ -20,8 +20,8 @@ pipeline {
           reuseNode true
         }
       }
-      steps {
-        sh 'echo abc'
+      withDockerContainer('') {
+        sh "ls"
       }
     }
   }
