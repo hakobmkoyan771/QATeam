@@ -20,8 +20,10 @@ pipeline {
           reuseNode true
         }
       }
-      withDockerContainer('') {
-        sh "ls"
+      steps {
+        withDockerContainer('') {
+          sh "ls"
+        }
       }
     }
   }
