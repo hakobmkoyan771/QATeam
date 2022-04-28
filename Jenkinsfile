@@ -14,7 +14,9 @@ pipeline {
     }
     stage("Build Python Container Image") {
       steps {
-        docker.build("python_container", "-f ./Dockerfile .")
+        script {
+          docker.build("python_container", "-f ./Dockerfile .")
+        }
       }
       withDockerContainer('python_container') {
         sh 'ls' 
