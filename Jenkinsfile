@@ -21,8 +21,9 @@ pipeline {
         }
       }
       steps {
-        withDockerContainer('') {
-          sh "ls"
+        script {
+            sh 'ls'
+          }
         }
       }
     }
