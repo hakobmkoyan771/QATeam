@@ -22,8 +22,7 @@ pipeline {
       }
       steps {
         script {
-            sh 'ls'
-          }
+          sh 'ls'
         }
       }
     }
