@@ -11,14 +11,9 @@ pipeline {
         }
       }
     }
-    stage("Build Python Container Image") {
+    stage("Build & Run Pytest Container") {
       steps {
-        script {
-          docker.build("python_container", "-f ./Dockerfile .")
-        }
-        withDockerContainer('python_container') {
-          sh 'ls' 
-        }
+        docker
       }
     }
   }
