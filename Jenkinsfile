@@ -1,24 +1,28 @@
 pipeline {
   agent any
+  parameters {
+    string(name: 'link', defaultValue: '', description: """Link of student's git repository""") 
+  }
   stages {
     stage("Checkout Tasks Repo")  {
       steps {
         dir('Students') {
-          git branch: 'main', url: 'https://github.com/armenmelkonyan90/for-python-tasks'
+          git branch: 'main', url: ${params.link}//'https://github.com/armenmelkonyan90/for-python-tasks'
         }
       }
     }
-    stage("Build Python Container Image") {
+    /*stage("Build Python Container Image") {
+    agent {
+      dockerfile {
+        filename 'Dockerfile'
+        reuseNode true
+      }
+    }
       steps {
         script {
           docker.build("python_container")
         }
       }
     }
-    stage("Copy Workspace Files on Python Container") {
-      steps {
-        sh "docker cp ./* " 
-      }
-    }
-  }
+  }*/
 }
