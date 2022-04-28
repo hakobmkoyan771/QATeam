@@ -8,13 +8,13 @@ pipeline {
       steps {
         dir('Students') {
           git branch: 'main', url: "${params.link}"
+          sh 'echo "${params.link}" > repo-link'
         }
       }
     }
-    stage("Build & Run Pytest Container") {
+/*    stage("Build & Run Pytest Container") {
       steps {
-        docker
       }
-    }
+    }*/
   }
 }
