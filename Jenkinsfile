@@ -14,8 +14,7 @@ pipeline {
     stage("Build Python Container Image") {
       agent {
         dockerfile {
-          filename 'Dockerfile'
-          args "-u root" 
+          filename 'Dockerfile' 
           reuseNode true
         }
       }
