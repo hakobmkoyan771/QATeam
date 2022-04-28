@@ -17,9 +17,9 @@ pipeline {
         script {
           docker.build("python_container", "-f ./Dockerfile .")
         }
-      }
-      withDockerContainer('python_container') {
-        sh 'ls' 
+        withDockerContainer('python_container') {
+          sh 'ls' 
+        }
       }
     }
   }
