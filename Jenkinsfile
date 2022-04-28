@@ -1,6 +1,17 @@
 pipeline {
-  agent any
-  parameters {
+  agent { dockerfile true }
+  stages {
+    stage('Test') {
+      steps {
+        sh '''
+          node --version
+          git --version
+          curl --version
+        '''
+      }
+    }
+  }
+  /*parameters {
     string(name: 'link', defaultValue: 'https://github.com/armenmelkonyan90/for-python-tasks.git', description: """Link of student's git repository""") 
   }
   stages {
@@ -10,7 +21,7 @@ pipeline {
           git branch: 'main', url: "${params.link}"//'https://github.com/armenmelkonyan90/for-python-tasks'
         }
       }
-    }
+    }*/
     /*stage("Build Python Container Image") {
     agent {
       dockerfile {
