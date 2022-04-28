@@ -12,9 +12,11 @@ pipeline {
         sh """echo "${params.link}" > ./GitRepo/repo-link"""
       }
     }
-/*    stage("Build & Run Pytest Container") {
+    stage("Build & Run Pytest Container") {
       steps {
+        sh "docker build -t ttt ."
+        sh "docker run ttt"
       }
-    }*/
+    }
   }
 }
