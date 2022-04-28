@@ -4,6 +4,8 @@ RUN pip install pytest
 
 WORKDIR /TestJobs
 
-COPY ./Python .
+COPY ./GitRepo .
 
-COPY ./
+COPY ./test_sample.py .
+
+CMD ["pytest", "/TestJobs/"]
