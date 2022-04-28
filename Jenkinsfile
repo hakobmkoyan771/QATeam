@@ -13,17 +13,11 @@ pipeline {
       }
     }
     stage("Build Python Container Image") {
-      agent {
-        dockerfile {
-          filename 'Dockerfile'
-          args '-u root'
-          reuseNode true
-        }
-      }
       steps {
-        script {
-          sh 'ls'
-        }
+        docker.build("python_container", "-f ./Dockerfile .")
+      }
+      withDockerContainer('python_container') {
+        sh 'ls' 
       }
     }
   }
