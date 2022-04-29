@@ -6,4 +6,4 @@ WORKDIR /TestingJobs
 
 COPY . .
 
-CMD ["pytest", "/TestingJobs/GitRepo/"]
+CMD ["pytest", "/TestingJobs/"]
