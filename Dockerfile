@@ -2,8 +2,8 @@ FROM python
 
 RUN pip install pytest
 
-WORKDIR /TestJobs
+WORKDIR /TestingJobs
 
 COPY . .
 
-CMD ["pytest", "/TestJobs/"]
+CMD ["pytest -v", "/TestingJobs/GitRepo/Python"]
