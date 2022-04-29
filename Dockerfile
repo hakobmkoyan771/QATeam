@@ -6,4 +6,4 @@ WORKDIR /TestJobs
 
 COPY . .
 
-CMD ["pytest", "/TestJobs/", "> /TestAnswers/answers.txt"]
+CMD ["pytest", "/TestJobs/"]
