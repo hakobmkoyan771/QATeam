@@ -4,18 +4,17 @@ pipeline {
     string(name: 'link', defaultValue: 'https://github.com/armenmelkonyan90/for-python-tasks.git', description: """Link of student's git repository""") 
   }
   stages {
-    stage("Checkout Tasks Repo")  {
+    stage('Checkout "Tasks" Repo')  {
       steps {
-        dir('GitRepo') {
+        dir('TasksRepo') {
           git branch: 'main', url: "${params.link}"
         }
-        sh """echo "${params.link}" > ./GitRepo/repo-link"""
       }
     }
-    stage("Build & Run Pytest Container") {
+    stage("Build & Run Testing Container") {
       steps {
-        sh "docker build -t ughakianun ."
-        sh """docker run --rm --name abc ughakianun > answers.txt """
+        sh "docker build -t temp_test_img ."
+        sh """docker run --rm --name temp_container temp_test_img > answers.txt """
       }
     }
   }
