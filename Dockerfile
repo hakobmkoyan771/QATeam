@@ -2,8 +2,6 @@ FROM python
 
 RUN pip install pytest
 
-RUN mkdir /TestAnswers
-
 WORKDIR /TestJobs
 
 COPY . .
