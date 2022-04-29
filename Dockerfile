@@ -2,7 +2,7 @@ FROM python
 
 RUN pip install pytest
 
-WORKDIR /TestAnswers
+RUN mkdir /TestAnswers
 
 WORKDIR /TestJobs
 
