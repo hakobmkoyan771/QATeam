@@ -14,8 +14,8 @@ pipeline {
     }
     stage("Build & Run Pytest Container") {
       steps {
-        sh "docker build -t ttt ."
-        sh "docker run ttt"
+        sh "docker build -t ughakianun ."
+        sh "docker run --rm ughakianun"
       }
     }
   }
