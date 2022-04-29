@@ -6,4 +6,4 @@ WORKDIR /TestingJobs
 
 COPY . .
 
-CMD ["pytest", "-v /TestingJobs/GitRepo/Python/"]
+CMD ["pytest", "/TestingJobs/GitRepo/Python/"]
