@@ -15,7 +15,7 @@ pipeline {
     stage("Build & Run Pytest Container") {
       steps {
         sh "docker build -t ughakianun ."
-        sh """docker run --rm --name abc -v /bitnami/jenkins/home/workspace/${env.JOB_NAME}/TestAnswers:/TestAnswers ughakianun"""
+        sh """docker run --rm --name abc ughakianun | echo > answers.txt """
       }
     }
   }
