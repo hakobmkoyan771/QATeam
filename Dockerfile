@@ -1,5 +1,5 @@
 FROM python
-
+RUN pip install Flask
 RUN pip install pytest
 
 WORKDIR /TestingJobs
