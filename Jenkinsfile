@@ -15,7 +15,7 @@ pipeline {
       steps {
         sh "docker build -t temp_test_img ."
         sh """docker run --rm --name temp_container temp_test_img > answers.txt"""
-      }
+      } 
     }
   }
 }
