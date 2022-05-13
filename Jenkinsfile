@@ -41,9 +41,4 @@ pipeline {
       }  
     }
   }
-  post {
-    always {
-      sh "container rm -f temp_container" 
-    }
-  }
 }
