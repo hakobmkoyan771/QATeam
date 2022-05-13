@@ -25,7 +25,7 @@ pipeline {
         script {
           try {
             dir('TasksRepo') {
-              git branch: 'main', url: "https://github.com/armenmelkonyan90/for-python-tasks.git"
+              git branch: 'main', url: "https://github.com/hakobmkoyan771/PythonWorkdir.git"
             }
           }
           catch(Exception err) {
