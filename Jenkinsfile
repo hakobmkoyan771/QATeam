@@ -2,13 +2,15 @@ pipeline {
   agent any
   triggers {
     GenericTrigger(causeString: 'Generic Cause', 
-                   genericVariables: [[key: 'COMMIT_HASH', value: '$.head_commit.id']])
+                   genericVariables: [[key: 'COMMIT_HASH', value: '$.head_commit.id'],
+                                      [key: 'NAME', value: '$.repository.name']])
   } 
   stages {
     stage("Store commit hash") { 
       steps {
         script {
           try {
+            sh """echo ${NAME}"""
             sh """docker exec redis_server redis-cli "set" "BEFORE_TEST" "${COMMIT_HASH}" """
             sh """docker exec redis_server redis-cli "save" """
           }
