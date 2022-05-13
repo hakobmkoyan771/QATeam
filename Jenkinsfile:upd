@@ -1,10 +1,15 @@
 pipeline {
   agent any
+  triggers {
+    GenericTrigger(causeString: 'Generic Cause', 
+                   genericVariables: [[key: 'COMMIT_HASH', value: '$.head_commit.id']])
+  }
   
   stages {
     stage("Keep commit hash") {
       steps {
-        sh """docker exec redis_server redis-cli """""
+        sh """docker exec redis_server redis-cli "set" "BEFORE_TEST" "${COMMIT_HASH}" """
+        sh """docker exec redis_server redis-cli "save" """
       }
     }
     stage('Checkout "Tasks" Repo')  {
@@ -17,7 +22,7 @@ pipeline {
     stage("Build & Run Testing Container") {
       steps {
         sh "docker build -t temp_test_img ."
-        sh """docker run --rm --name temp_container temp_test_img >> answers.txt"""
+        sh """docker run --rm --name temp_container temp_test_img > answers.txt"""
       }  
     }
   }
