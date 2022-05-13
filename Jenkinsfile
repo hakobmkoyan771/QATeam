@@ -3,7 +3,7 @@ pipeline {
   triggers {
     GenericTrigger(causeString: 'Generic Cause', 
                    genericVariables: [[key: 'COMMIT_HASH', value: '$.head_commit.id']])
-  }
+  } 
   stages {
     stage("Store commit hash") {
       steps {
