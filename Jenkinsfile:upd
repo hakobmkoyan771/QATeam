@@ -6,17 +6,31 @@ pipeline {
   }
   
   stages {
-    stage("Keep commit hash") {
+    stage("Store commit hash") {
       steps {
-        sh """docker exec redis_server redis-cli "set" "BEFORE_TEST" "${COMMIT_HASH}" """
-        sh """docker exec redis_server redis-cli "save" """
+        script {
+          try {
+            sh """docker exec redis_server redis-cli "set" "BEFORE_TEST" "${COMMIT_HASH}" """
+            sh """docker exec redis_server redis-cli "save" """
+          }
+          catch(Exception err) {
+            error("Unable to store commit hash")
+          }
+        }
       }
     }
     stage('Checkout "Tasks" Repo')  {
       steps {
-        dir('TasksRepo') {
-          git branch: 'main', url: "https://github.com/armenmelkonyan90/for-python-tasks.git"
-        }
+        script {
+          try {
+            dir('TasksRepo') {
+              git branch: 'main', url: "https://github.com/armenmelkonyan90/for-python-tasks.git"
+            }
+          }
+          catch(Exception err) {
+            error("Unable to clone developer's repo")
+          }
+        }  
       }
     }
     stage("Build & Run Testing Container") {
