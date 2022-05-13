@@ -5,7 +5,7 @@ pipeline {
                    genericVariables: [[key: 'COMMIT_HASH', value: '$.head_commit.id']])
   } 
   stages {
-    stage("Store commit hash") {
+    stage("Store commit hash") { 
       steps {
         script {
           try {
