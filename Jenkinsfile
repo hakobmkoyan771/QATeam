@@ -10,7 +10,6 @@ pipeline {
       steps {
         script {
           try {
-            echo NAME
             sh """docker exec redis_server redis-cli "set" "BEFORE_TEST" "${COMMIT_HASH}" """
             sh """docker exec redis_server redis-cli "save" """
           }
