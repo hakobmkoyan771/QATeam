@@ -8,7 +8,9 @@ pipeline {
   }
   stages {
     stage("Store Dev Repo Commit Hash") {
-      echo TAG_NAME
+      steps {
+        echo TAG_NAME
+      }
     }
   }
 }
