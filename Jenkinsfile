@@ -4,12 +4,13 @@ pipeline {
     GenericTrigger(causeString: 'GenericCause', genericVariables: [[key: 'Tag', value: '$.release.tag_name']]) 
   }
   environment {
-    TAG_NAME = "${Tag}" 
+    TAG_NAME = ""
   }
   stages {
     stage("Store Dev Repo Commit Hash") {
       steps {
-        echo TAG_NAME
+        TAG_NAME = "${Tag}"
+        echo "${TAG_NAME}"
       }
     }
   }
