@@ -1,6 +1,20 @@
 pipeline {
   agent any
   triggers {
+    GenericTrigger(causeString: 'GenericCause', genericVariables: [[key: 'Tag', value: '$.release.tag_name']]) 
+  }
+  environment {
+    TAG_NAME = "${Tag}" 
+  }
+  stages {
+    stage("Store Dev Repo Commit Hash") {
+      echo TAG_NAME
+    }
+  }
+}
+/*pipeline {
+  agent any
+  triggers {
     GenericTrigger(causeString: 'Generic Cause', 
                    genericVariables: [[key: 'COMMIT_HASH', value: '$.head_commit.id'],
                                       [key: 'NAME', value: '$.repository.name']])
@@ -40,4 +54,4 @@ pipeline {
       }  
     }
   }
-}
+}*/
