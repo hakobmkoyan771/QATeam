@@ -12,8 +12,8 @@ pipeline {
     stage("Store Dev Repo Commit Hash") {
       steps {
         script {
-          $TAG_NAME = "${RELEASE_TAG}"
-          $COMMIT_SHA = sh """git ls-remote "${REPO_LINK}" rev-list -n 1 "${RELEASE_TAG}" """ // | awk "{print $1}" """
+          TAG_NAME = "${RELEASE_TAG}"
+          COMMIT_SHA = sh """git ls-remote ${REPO_LINK} rev-list -n 1 ${RELEASE_TAG} """ // | awk "{print $1}" """
         }
       }
     }
