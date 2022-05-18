@@ -5,6 +5,7 @@ pipeline {
                                                                    [key: 'REPO_LINK', value: '$.repository.clone_url']]) 
   }
   environment {
+    test = "hello"
     TAG_NAME = ""
     COMMIT_SHA = ""
     DEV_REPO = ""
