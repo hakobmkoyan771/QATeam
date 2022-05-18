@@ -13,8 +13,12 @@ pipeline {
     stage("Store Dev Repo Commit Hash & Specify Developer's repo as DEV_REPO") {
       steps {
         script {
-          TAG_NAME = "${RELEASE_TAG}"
-          DEV_REPO = "${REPO_LINK}"
+          sh """docker exec redis_server redis-cli 'set' 'TAG_NAME' "${RELEASE_TAG}" """
+          sh """docker exec redis_server redis-cli 'set' 'DEV_REPO' "${REPO_LINK}" """
+          sh """docker exec redis_server redis-cli 'set' 'COMMIT_HASH' "${COMMIT_SHA}" """
+          sh """docker exec redis_server redis-cli 'save' """
+          //TAG_NAME = "${RELEASE_TAG}"
+          //DEV_REPO = "${REPO_LINK}"
         }
       }
     }
