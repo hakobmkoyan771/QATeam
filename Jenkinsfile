@@ -7,12 +7,14 @@ pipeline {
   environment {
     TAG_NAME = ""
     COMMIT_SHA = ""
+    DEV_REPO = ""
   }
   stages {
-    stage("Store Dev Repo Commit Hash") {
+    stage("Store Dev Repo Commit Hash & Specify Developer's repo as DEV_REPO") {
       steps {
         script {
           TAG_NAME = "${RELEASE_TAG}"
+          DEV_REPO = "${REPO_LINK}"
         }
       }
     }
