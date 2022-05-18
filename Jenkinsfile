@@ -13,9 +13,6 @@ pipeline {
       steps {
         script {
           TAG_NAME = "${RELEASE_TAG}"
-          COMMIT_SHA = sh """git ls-remote ${REPO_LINK} rev-list -n 1 ${RELEASE_TAG} | awk {print 1} """
-          //COMMIT_SHA = sh """echo ${COMMIT_SHA}| awk {print $1} """
-          echo COMMIT_SHA
         }
       }
     }
@@ -25,6 +22,8 @@ pipeline {
           try {
             dir('TasksRepo') {
               git branch: 'main', url: "${REPO_LINK}"
+              COMMIT_SHA = sh "git rev-list -n 1 ${RELEASE_TAG}"
+              echo COMMIT_SHA
             }
           }
           catch(Exception err) {
