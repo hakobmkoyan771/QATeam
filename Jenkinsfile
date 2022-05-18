@@ -43,7 +43,8 @@ pipeline {
   }
   post {
     success {
-      sh "export TAG_NAME=abc" 
+      sh "export TAG_NAME=abc"
+      sh "echo $TAG_NAME"
     }
   }
 }
