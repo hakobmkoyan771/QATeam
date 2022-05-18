@@ -10,18 +10,7 @@ pipeline {
     DEV_REPO = ""
   }
   stages {
-    stage("Store Dev Repo Commit Hash & Specify Developer's repo as DEV_REPO") {
-      steps {
-        script {
-          sh """docker exec redis_server redis-cli 'set' 'TAG_NAME' "${RELEASE_TAG}" """
-          sh """docker exec redis_server redis-cli 'set' 'DEV_REPO' "${REPO_LINK}" """
-          sh """docker exec redis_server redis-cli 'set' 'COMMIT_HASH' "${COMMIT_SHA}" """
-          sh """docker exec redis_server redis-cli 'save' """
-          //TAG_NAME = "${RELEASE_TAG}"
-          //DEV_REPO = "${REPO_LINK}"
-        }
-      }
-    }
+
     stage('Checkout "Tasks" Repo')  {
       steps {
         script {
@@ -44,11 +33,17 @@ pipeline {
         sh """docker run --rm --name temp_container temp_test_img > answers.txt""" 
       }  
     }
-  }
-  post {
-    success {
-      sh "export TAG_NAME=abc"
-      sh 'echo $TAG_NAME'
+    stage("Store Dev Repo Commit Hash & Specify Developer's repo as DEV_REPO") {
+      steps {
+        script {
+          sh """docker exec redis_server redis-cli 'set' 'TAG_NAME' "${RELEASE_TAG}" """
+          sh """docker exec redis_server redis-cli 'set' 'DEV_REPO' "${REPO_LINK}" """
+          sh """docker exec redis_server redis-cli 'set' 'COMMIT_HASH' "${COMMIT_SHA}" """
+          sh """docker exec redis_server redis-cli 'save' """
+          //TAG_NAME = "${RELEASE_TAG}"
+          //DEV_REPO = "${REPO_LINK}"
+        }
+      }
     }
   }
 }
