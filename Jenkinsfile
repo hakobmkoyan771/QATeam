@@ -41,6 +41,11 @@ pipeline {
       }  
     }
   }
+  post {
+    success {
+      sh "export TAG_NAME=${TAG_NAME}" 
+    }
+  }
 }
 /*pipeline {
   agent any
