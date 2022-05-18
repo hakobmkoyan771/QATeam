@@ -22,7 +22,7 @@ pipeline {
           try {
             dir('TasksRepo') {
               git branch: 'main', url: "${REPO_LINK}"
-              COMMIT_SHA = sh "git rev-list -n 1 ${RELEASE_TAG}"
+              COMMIT_SHA = sh returnStdout: true, script: "git rev-list -n 1 ${RELEASE_TAG}"
               echo COMMIT_SHA
             }
           }
