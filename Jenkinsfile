@@ -15,7 +15,7 @@ pipeline {
     stage('Checkout "Tasks" Repo')  {
       steps {
         script {
-          folder('my folder') {
+          folder('HakobMkoyan') {
             properties {
                 folderProperties {
                     properties {
