@@ -15,6 +15,18 @@ pipeline {
     stage('Checkout "Tasks" Repo')  {
       steps {
         script {
+          folder('my folder') {
+            properties {
+                folderProperties {
+                    properties {
+                        stringProperty {
+                            key('env_var')
+                            value("${ENV_VAR}")
+                        }
+                    }
+                }
+            }
+        }
           try {
             dir('TasksRepo') {
               git branch: 'main', url: "${REPO_LINK}"
