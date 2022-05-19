@@ -10,7 +10,7 @@ pipeline {
     COMMIT_SHA = ""
     DEV_REPO = ""
   }
-  properties {
+  options {
     folderProperties {
       properties {
         stringProperty {
