@@ -10,23 +10,22 @@ pipeline {
     COMMIT_SHA = ""
     DEV_REPO = ""
   }
+  folder('HakobMkoyan') {
+    properties {
+      folderProperties {
+        properties {
+          stringProperty {
+            key('env_var')
+            value("${ENV_VAR}")
+          }
+        }
+      }
+    } 
+  }  
   stages {
-
     stage('Checkout "Tasks" Repo')  {
       steps {
         script {
-          folder('HakobMkoyan') {
-            properties {
-                folderProperties {
-                    properties {
-                        stringProperty {
-                            key('env_var')
-                            value("${ENV_VAR}")
-                        }
-                    }
-                }
-            }
-        }
           try {
             dir('TasksRepo') {
               git branch: 'main', url: "${REPO_LINK}"
