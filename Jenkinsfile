@@ -10,16 +10,6 @@ pipeline {
     COMMIT_SHA = ""
     DEV_REPO = ""
   }
-  options {
-    folderProperties {
-      properties {
-        stringProperty {
-          key('env_var')
-          value("${ENV_VAR}")
-        }
-      }
-    }
-  } 
   stages {
     stage('Checkout "Tasks" Repo')  {
       steps {
